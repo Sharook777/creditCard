@@ -1,0 +1,23 @@
+.card-form {
+  border-right: 1px solid #e5eff5;
+  border-left: 1px solid #e5eff5;
+  background-color: #fff;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.03), 0 3px 46px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+.card-wrapper {
+  width: 50%;
+  margin: auto;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.heading {
+  text-align: center;
+}
+
+.example-full-width {
+  width: 100%;
+}

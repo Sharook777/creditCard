@@ -1,0 +1,53 @@
+<h1 style="text-align: center; font-weight: 500">Credit Card App</h1>
+
+<div style="margin-bottom: 40px">
+  <div style="display: flex; justify-content: center">
+    <div
+      class="card-detail"
+      *ngFor="let creditCard of creditCards | async; let i = index"
+    >
+      <mat-card>
+        <mat-card-title class="display-flex">
+          <span class="material-icons"> credit_card </span>
+          <div style="margin-left: 10px">
+            {{ creditCard.creditCardNumber }}
+          </div>
+        </mat-card-title>
+        <div class="display-flex" style="margin: 10px 0; font-size: 20px">
+          <span class="material-icons"> account_circle </span>
+          <div style="margin-left: 10px">{{ creditCard.cardHolderName }}</div>
+        </div>
+        <div class="display-flex" style="justify-content: space-between">
+          <div class="display-flex">
+            <span class="material-icons"> calendar_today </span>
+            <div style="margin: 0 10px">
+              {{
+                monthNames[creditCard.expirationDate.getMonth()] +
+                  " " +
+                  (creditCard.expirationDate.getFullYear() + 1).toString()
+              }}
+            </div>
+          </div>
+          <div class="display-flex">
+            <span class="material-icons"> vpn_key </span>
+            <div style="margin: 0 10px">{{ creditCard.secuityCode }}</div>
+          </div>
+          <div class="display-flex">
+            <span class="material-icons"> attach_money </span>
+            <div style="margin: 0 10px">{{ creditCard.amount }}</div>
+          </div>
+        </div>
+      </mat-card>
+    </div>
+  </div>
+  <div style="text-align: center">
+    <button
+      mat-raised-button
+      color="accent"
+      (click)="redirectBack()"
+      style="margin: 20px"
+    >
+      Create Card
+    </button>
+  </div>
+</div>

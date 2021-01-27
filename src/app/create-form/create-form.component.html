@@ -1,0 +1,98 @@
+<div class="card-wrapper">
+  <mat-card style="width: 100%">
+    <mat-card-title class="heading">Credit Card Details</mat-card-title>
+    <form [formGroup]="creditCardForm" (ngSubmit)="onSubmit()">
+      <div>
+        <mat-form-field class="example-full-width">
+          <mat-label>Credit Card Number:</mat-label>
+          <input
+            matInput
+            type="text"
+            formControlName="creditCardNumber"
+            autocomplete="off"
+            minlength="10"
+          />
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field class="example-full-width">
+          <mat-label>Card Holder Name:</mat-label>
+          <input
+            matInput
+            type="text"
+            formControlName="cardHolderName"
+            autocomplete="off"
+          />
+        </mat-form-field>
+      </div>
+      <div style="display: flex; justify-content: space-between">
+        <div formGroupName="expirationDate" style="width: 33%">
+          <mat-form-field class="example-full-width">
+            <mat-label>Expiration Month:</mat-label>
+            <mat-select formControlName="expirationMonth">
+              <mat-option
+                *ngFor="let month of months"
+                [value]="month"
+                [disabled]="disablePreviousMonth(month)"
+              >
+                {{ month }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div formGroupName="expirationDate" style="width: 25%">
+          <mat-form-field class="example-full-width">
+            <mat-label>Expiration Year:</mat-label>
+            <mat-select formControlName="expirationYear">
+              <mat-option
+                *ngFor="let year of years"
+                [value]="year"
+                [disabled]="disableYears(year)"
+              >
+                {{ year }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div style="width: 33%">
+          <mat-form-field class="example-full-width">
+            <mat-label>Secuity Code:</mat-label>
+            <input
+              matInput
+              type="text"
+              formControlName="secuityCode"
+              maxLength="3"
+              autocomplete="off"
+            />
+          </mat-form-field>
+        </div>
+      </div>
+      <div>
+        <mat-form-field class="example-full-width">
+          <mat-label>Amount:</mat-label>
+          <input
+            matInput
+            type="text"
+            formControlName="amount"
+            (keypress)="numberOnly($event)"
+            autocomplete="off"
+          />
+        </mat-form-field>
+      </div>
+      <div style="margin: 20px 0; text-align: center">
+        <button mat-raised-button color="warn" (click)="redirectBack()">
+          Back
+        </button>
+        <button
+          type="submit"
+          [disabled]="!creditCardForm.valid"
+          mat-raised-button
+          color="primary"
+          style="margin-left: 20px"
+        >
+          Submit
+        </button>
+      </div>
+    </form>
+  </mat-card>
+</div>

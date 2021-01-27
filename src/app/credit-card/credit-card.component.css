@@ -1,0 +1,15 @@
+.card {
+  border: 1px solid;
+  padding: 20px;
+}
+
+.card-detail {
+  min-width: 33.333333%;
+  width: 33.333333%;
+  padding: 20px;
+}
+
+.display-flex {
+  display: flex;
+  align-items: center;
+}
